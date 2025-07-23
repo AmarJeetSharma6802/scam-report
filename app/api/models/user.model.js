@@ -22,14 +22,17 @@ const userschema = new mongoose.Schema({
         type:String,
         required:true,
         },
-    password:{
-        type:String,
-        required:true,
-        trim:true,
-    },
+    password: {
+    type: String,
+    trim: true,
+    required: function () {
+        return this.provider === "manual";
+    }
+},
     refreshToken:{
         type:String
-    }
+    },
+     provider: { type: String, default: "manual" },
 },
 {
     timestamps:true
