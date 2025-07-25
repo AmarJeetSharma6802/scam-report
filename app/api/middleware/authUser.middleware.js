@@ -21,6 +21,7 @@ const authUser = async(req)=>{
             return NextResponse.json({message:"user Not found"}, {status:404})
 
         }
+
         return{user}
 
     } catch (error) {
