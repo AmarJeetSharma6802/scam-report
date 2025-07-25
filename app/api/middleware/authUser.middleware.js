@@ -27,3 +27,5 @@ const authUser = async(req)=>{
         console.log(error)
     }
 }
+
+export default authUser
