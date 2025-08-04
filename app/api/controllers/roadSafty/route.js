@@ -1,6 +1,6 @@
 import DBconnect from "../../lib/DBconnect.js"
 import {uploadOnCloudinary} from "../../utils"
-import roadSafetyHeroesSchemaData from "../../models/roadSafetyHeros.model.js"
+import roadSafetyHeroesSchemaData from "../../models/roadSafetyHeros.js"
 import { writeFile } from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
