@@ -6,7 +6,7 @@ import path from "path";
 import { NextResponse } from "next/server";
 
 
-export async function GET(req){
+export async function GET(){
     await DBconnect()
     const foundUser = await roadSafetyHeroesSchemaData.find()
    if (!foundUser || foundItems.length === 0) {
@@ -56,3 +56,5 @@ export async function POST(req){
     }
 
 }
+
+
