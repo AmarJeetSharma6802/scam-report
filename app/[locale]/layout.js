@@ -1,16 +1,13 @@
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-  return ['en', 'hi', 'fr', 'de', 'es'].map((locale) => ({ locale }));
-}
-
 export default async function RootLayout({ children, params }) {
   const { locale } = params;
   let messages;
+
   try {
-    messages = require(`../../locales/${locale}.json`);
+    messages = (await import(`../../locales/${locale}.json`)).default;
   } catch (error) {
-    notFound();
+    notFound(); // 404 if language file not found
   }
 
   return (
