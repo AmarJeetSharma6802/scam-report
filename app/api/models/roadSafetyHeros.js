@@ -16,6 +16,6 @@ const roadSafetyHerosSchema = new mongoose.Schema({
 });
 
 
-const roadSafetyHeroesSchemaData = mongoose.model.roadSafetyHerosSchemaData || mongoose.models("roadSafetyHerosSchemaData",roadSafetyHerosSchema)
+const roadSafetyHeroesSchemaData = mongoose.models.roadSafetyHerosSchemaData || mongoose.model("roadSafetyHerosSchemaData",roadSafetyHerosSchema)
 
 export default roadSafetyHeroesSchemaData

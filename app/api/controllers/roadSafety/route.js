@@ -1,15 +1,16 @@
 import DBconnect from "../../lib/DBconnect.js"
-import {uploadOnCloudinary} from "../../utils"
+
 import roadSafetyHeroesSchemaData from "../../models/roadSafetyHeros.js"
 import { writeFile } from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
+import {uploadOnCloudinary} from "../../utils/cloudinary.js"
 
 
 export async function GET(){
     await DBconnect()
     const foundUser = await roadSafetyHeroesSchemaData.find()
-   if (!foundUser || foundItems.length === 0) {
+   if (!foundUser || foundUser.length === 0) {
     return NextResponse.json({ message: "No items found" }, { status: 404 });
   }
 
