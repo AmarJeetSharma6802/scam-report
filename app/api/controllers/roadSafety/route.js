@@ -34,7 +34,7 @@ export async function POST(req){
     const buffer =  Buffer.from(await file.arrayBuffer())
     const tempFilePath = path.join("/tmp" ,file.name)
     await writeFile(tempFilePath,buffer)
-    const uploaded  = await uploadOnCloudinary(tempFilePath, image)
+    const uploaded  = await uploadOnCloudinary(tempFilePath )
 
     if (!uploaded) {
       return NextResponse.json({ error: "Cloudinary image upload failed" }, { status: 500 });

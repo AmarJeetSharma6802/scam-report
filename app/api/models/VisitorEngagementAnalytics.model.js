@@ -8,6 +8,6 @@ const VisitorSchema = new mongoose.Schema({
 });
 
 
-const VisitorData = mongoose.model.VisitorData || mongoose.models("VisitorData",VisitorSchema)
+const VisitorData = mongoose.models.VisitorData || mongoose.model("VisitorData",VisitorSchema)
 
 export default VisitorData

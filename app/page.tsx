@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       
-      <h1>Scam Report task </h1>
+      <h1>hello how are you </h1>
     </div>
   );
 }
