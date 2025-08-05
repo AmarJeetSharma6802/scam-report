@@ -1,10 +1,20 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
+import acceptLanguage from 'accept-language';
 
-export default createMiddleware({
-  locales: ['en', 'hi', 'gu', 'ta', 'mr'],
-  defaultLocale: 'en'
-});
+acceptLanguage.languages(['en', 'hi', 'fr', 'de', 'es']);
+
+export function middleware(req) {
+  let locale = req.cookies.get('NEXT_LOCALE')?.value;
+
+  if (!locale) {
+    locale = acceptLanguage.get(req.headers.get('accept-language'));
+  }
+
+  if (!locale) locale = 'en';
+
+  return NextResponse.redirect(new URL(`/${locale}`, req.url));
+}
 
 export const config = {
-  matcher: ['/((?!api|_next|favicon.ico|.*\\..*).*)'],
+  matcher: ['/((?!_next|favicon.ico).*)'],
 };
