@@ -1,14 +1,24 @@
-// app/page.js
-'use client'
+// app/[locale]/page.tsx
+'use client';
 
-import { useTranslation } from 'react-i18next'
+import { useRouter, usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
-export default function HomePage() {
-  const { t, i18n } = useTranslation()
+export default function HomePage({ params }) {
+  const t = useTranslations('translation');
+  const router = useRouter();
+  const pathname = usePathname();
+  const [lang, setLang] = useState(params.locale || 'en');
+
+  useEffect(() => {
+    const newLang = params.locale || 'en';
+    setLang(newLang);
+  }, [params.locale]);
 
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng)
-  }
+    router.push(`/${lng}${pathname}`);
+  };
 
   return (
     <main style={{ padding: '2rem' }}>
@@ -23,5 +33,5 @@ export default function HomePage() {
         <button onClick={() => changeLanguage('mr')}>मराठी</button>
       </div>
     </main>
-  )
+  );
 }
