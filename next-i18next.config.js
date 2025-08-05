@@ -1,8 +1,9 @@
+const path = require('path');
 
 module.exports = {
   i18n: {
-    defaultLocale: "en",          // 🔸 Default language jab page open hota hai
-    locales: ["en", "hi", "gu", "ta", "mr"],  // 🔸 Available languages
+    defaultLocale: 'en',
+    locales: ['en', 'hi', 'ta', 'gu', 'mr'],
   },
-  localePath: "./public/locales", // 🔸 Translation files kaha rakhe gaye hain
+  localePath: path.resolve('./public/locales'),
 };
