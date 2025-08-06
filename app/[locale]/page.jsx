@@ -4,6 +4,7 @@ export default async function HomePage({ params }) {
 
   return (
     <div>
+      <h1>{messages.title}</h1>
       <h1>{messages.description}</h1>
     </div>
   );
