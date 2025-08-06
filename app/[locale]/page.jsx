@@ -1,11 +1,12 @@
-export default async function HomePage({ params }) {
-  const { locale } = params;
-  const messages = (await import(`../../locales/${locale}.json`)).default;
-
+import {useTranslations} from 'next-intl';
+import {Link} from '@/i18n/navigation';
+ 
+export default function HomePage() {
+  const t = useTranslations('HomePage');
   return (
     <div>
-      <h2>{messages.welcome}</h2>
-      <p>{messages.description}</p>
+      <h1>{t('title')}</h1>
+      <Link href="/about">{t('about')}</Link>
     </div>
   );
 }
