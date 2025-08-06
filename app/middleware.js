@@ -1,20 +1,11 @@
-import { NextResponse } from 'next/server';
-import acceptLanguage from 'accept-language';
-
-acceptLanguage.languages(['en', 'hi', 'fr', 'de', 'es']);
-
-export function middleware(req) {
-  let locale = req.cookies.get('NEXT_LOCALE')?.value;
-
-  if (!locale) {
-    locale = acceptLanguage.get(req.headers.get('accept-language'));
-  }
-
-  if (!locale) locale = 'en';
-
-  return NextResponse.redirect(new URL(`/${locale}`, req.url));
-}
-
+import createMiddleware from 'next-intl/middleware';
+import {routing} from './i18n/routing';
+ 
+export default createMiddleware(routing);
+ 
 export const config = {
-  matcher: ['/((?!_next|favicon.ico).*)'],
+  // Match all pathnames except for
+  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
+  // - … the ones containing a dot (e.g. `favicon.ico`)
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };

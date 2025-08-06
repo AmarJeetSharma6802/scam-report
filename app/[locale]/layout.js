@@ -5,7 +5,7 @@ export default async function RootLayout({ children, params }) {
   let messages;
 
   try {
-    messages = (await import(`../../locales/${locale}.json`)).default;
+    messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
     notFound(); // 404 if language file not found
   }
