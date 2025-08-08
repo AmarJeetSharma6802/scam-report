@@ -1,13 +1,13 @@
-import {useTranslations} from 'next-intl';
-// import {Link} from '../i18n/navigation';
+import { useTranslations } from 'next-intl';
 
-export default function HomePage() {
+export default function Home() {
   const t = useTranslations('HomePage');
-
+  
   return (
     <div>
       <h1>{t('title')}</h1>
-      {/* <Link href="/about">{t('about')}</Link> */}
+      <p>{t('welcome')}</p>
+      <p>{t('description')}</p>
     </div>
   );
 }
